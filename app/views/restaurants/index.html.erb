@@ -1,0 +1,13 @@
+<div class="ml-3 mt-3">
+  <h1>Restaurants</h1>
+</div>
+
+<% @restaurants.each do |restaurant| %>
+  <nav class="navbar navbar-light bg-light">
+    <a type="button" class="navbar-brand btn btn-outline-primary" href="<%= restaurant_path(restaurant) %>"><strong><%= restaurant.name %></strong> - <%= restaurant.category %> food</a>
+  </nav>
+<% end %>
+
+<div>
+  <%= link_to "Add a Restaurant", new_restaurant_path, class: "ml-3 mt-3 btn btn-primary"%>
+</div>

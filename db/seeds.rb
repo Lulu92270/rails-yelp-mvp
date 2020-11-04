@@ -10,3 +10,25 @@ puts "cleaning database..."
 
 Restaurant.destroy_all
 Review.destroy_all
+
+puts "creating restaurants and reviews..."
+
+5.times do
+
+  rest = Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: ["chinese", "italian", "japanese", "french", "belgian"].sample
+  )
+
+  5.times do
+    review = Review.create!({
+      content: Faker::Restaurant.review,
+      rating: rand(0..5),
+      restaurant: rest
+    })
+  end
+end
+
+puts "Finished!"
